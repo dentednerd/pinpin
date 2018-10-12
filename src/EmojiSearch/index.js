@@ -21,8 +21,6 @@ class EmojiSearch extends React.Component {
   render () {
     return (
       <div>
-
-        <h1>Emoji</h1>
         
         <SearchBar
             searchTerm={this.state.searchTerm} 

@@ -23,9 +23,28 @@ body {
   margin-bottom: 0px;
 }
 
-.App .header {
-  height: 100vh;
-  width: 50vw;
+.App .chooser {
+  width: 25vw;
+  height: 5vh;
+  border: solid 3px white;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif !important;
+  background-color: transparent;
+}
+
+.App .top {
+  height: 50vh;
+  width: 100vw;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App .bottom {
+  height: 50vh;
+  width: 100vw;
   color: white;
   display: flex;
   flex-flow: column nowrap;
@@ -40,11 +59,6 @@ body {
   max-width: calc(33vw - 48px);
   padding: 16px;
   margin: 8px;
-  background-color: rgba(255,255,255,0.5);
-}
-
-.App div div {
-  border: none;
 }
 
 .App input {
@@ -53,9 +67,10 @@ body {
   background: transparent;
   color: white;
   font-size: 20px;
-  padding: 5px;
+  padding: 0px 8px;
   margin: 16px;
-  width: 60%;
+  width: calc(25vw - 16px);
+  height: 5vh;
 }
 
 .App .emoji .emoji-results {

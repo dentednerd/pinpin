@@ -22,8 +22,6 @@ class DictionarySearch extends React.Component {
     return (
       <div>
 
-        <h1>Dictionary</h1>
-
         <SearchBar
             searchTerm={this.state.searchTerm} 
             updateSearchTerm={this.updateSearchTerm} 
