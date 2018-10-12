@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import EmojiSearch from './EmojiSearch';
 import DictionarySearch from './DictionarySearch';
 import Calculator from './Calculator';
+import Kanban from './Kanban';
+
 import Chooser from './Chooser';
 
 class App extends React.Component {
@@ -41,6 +43,7 @@ class App extends React.Component {
           <Chooser handleClick={this.handleClick} appName="emoji" />
           <Chooser handleClick={this.handleClick} appName="dictionary" />
           <Chooser handleClick={this.handleClick} appName="calculator" />
+          <Chooser handleClick={this.handleClick} appName="kanban" />
 
         </section>
 
@@ -61,6 +64,12 @@ class App extends React.Component {
           {this.state.visible === "calculator" && (
             <div className="calculator">
               <Calculator />
+            </div>
+          )}
+
+          {this.state.visible === "kanban" && (
+            <div className="kanban">
+              <Kanban />
             </div>
           )}
 

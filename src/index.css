@@ -63,6 +63,11 @@ body {
   margin: 8px;
 }
 
+.App .kanban {
+  width: 100vw;
+  height: 50vh;
+}
+
 .App input {
   border: solid 3px white;
   border-radius: 5px;
