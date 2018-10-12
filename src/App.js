@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+import EmojiSearch from './EmojiSearch';
+
+const App = () => {
+  return (
+    <main className="App">
+
+      <Helmet>
+        <title>
+          pinpin
+        </title>
+        <meta name="description" content="pinpin" />
+      </Helmet>
+
+      <header className="header">
+        <h1>
+          pinpin
+        </h1>
+      </header>
+      
+      <div className="emoji">
+        <EmojiSearch />
       </div>
-    );
-  }
-}
+    </main>
+  );
+};
 
 export default App;
