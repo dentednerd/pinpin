@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import EmojiSearch from './EmojiSearch';
+import DictionarySearch from './DictionarySearch';
 
 const App = () => {
   return (
@@ -14,15 +15,14 @@ const App = () => {
         <meta name="description" content="pinpin" />
       </Helmet>
 
-      <header className="header">
-        <h1>
-          pinpin
-        </h1>
-      </header>
-      
       <div className="emoji">
         <EmojiSearch />
       </div>
+
+      <div className="dictionary">
+        <DictionarySearch />
+      </div>
+      
     </main>
   );
 };
