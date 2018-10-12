@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import EmojiSearch from './EmojiSearch';
 import DictionarySearch from './DictionarySearch';
+import Calculator from './Calculator';
 
 const App = () => {
   return (
@@ -21,6 +22,10 @@ const App = () => {
 
       <div className="dictionary">
         <DictionarySearch />
+      </div>
+
+      <div className="calculator">
+        <Calculator />
       </div>
       
     </main>

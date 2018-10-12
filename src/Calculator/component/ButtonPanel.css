@@ -1,0 +1,12 @@
+.button-panel {
+  background-color: transparent;
+  display: flex;
+  flex-flow: column nowrap;
+  /* flex: 1 0 auto; */
+}
+
+.button-panel .button-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}

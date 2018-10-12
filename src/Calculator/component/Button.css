@@ -1,0 +1,32 @@
+.component-button {
+  display: inline-flex;
+  width: 25%;
+  flex: 1 0 auto;
+}
+
+.component-button.wide {
+  width: 64px;
+  margin-right: 6px;
+}
+
+.component-button button {
+  height: 32px;
+  width: 32px;
+  background-color: transparent;
+  color: white;
+  border: solid 2px white;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 0 4px 4px 0;
+  flex: 1 0 auto;
+  padding: 0;
+}
+
+.component-button:last-child button {
+  margin-right: 0;
+}
+
+.component-button.orange button {
+  background-color: #f5923e;
+  color: white;
+}
