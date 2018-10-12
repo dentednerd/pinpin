@@ -1,3 +1,5 @@
+/* TODO: my gods sort this out woman */
+
 .kanban-board {
   display: flex;
   flex-flow: row nowrap;
@@ -10,11 +12,18 @@
   width: 25vw;
 }
 
-.box {
+.edit-card-button {
+  background: transparent;
   border: solid 3px white;
+  border-radius: 4px;
+  color: white;
+}
+
+.card {
+  background: white;
   border-radius: 6px;
   font-size: 14px;
-  color: white;
+  color: black;
   margin-bottom: 6px;
   padding: 5px;
   display:flex;
@@ -34,15 +43,15 @@
   color:#fff;   
 }
 
-.box:hover .icon { 
+.card:hover .icon { 
   color:#888;
 } 
 
-.box:hover { 
+.card:hover { 
   background-color:#d3d3d3;
 } 
 
-.box:hover .button { 
+.card:hover .button { 
   background-color:#d3d3d3;
 } 
 

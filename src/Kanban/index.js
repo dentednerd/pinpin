@@ -1,9 +1,10 @@
 import React from 'react';
+import { v4 } from 'uuid';
 
 import List from './List';
 import './Kanban.css';
 
-import { v4 } from 'uuid';
+// TODO: still refs to Bootstrap CSS in here, refactor
 
 class Trello extends React.Component {
   constructor(props) {
@@ -47,44 +48,46 @@ class Trello extends React.Component {
     this.editCard = this.editCard.bind(this);
   }
 
-    updateCards(newCard, id) {
-        const newCardFormatted = {
-            id: v4(),
-            text: newCard
-        };
-        const index = findIndex(this.state.lists, id);
-        const a = this.state.lists;
-        a[index].cards.push(newCardFormatted);
-        this.setState({
-            lists: a
-        });
-    }
-    editCard(text, listId, cardId) {
-        const listIndex = findIndex(this.state.lists, listId);
-        const cardIndex = findIndex(this.state.lists[listIndex].cards, cardId);
-        const listToEdit = this.state.lists;
-        const formattedComment = {
-            id: cardIndex,
-            text: text
-        };
-        listToEdit[listIndex].cards[cardIndex] = formattedComment;
-        this.setState({
-            lists: listToEdit
-        });
-    }
+  updateCards(newCard, id) {
+    const newCardFormatted = {
+      id: v4(),
+      text: newCard
+    };
+    const index = findIndex(this.state.lists, id);
+    const a = this.state.lists;
+    a[index].cards.push(newCardFormatted);
+    this.setState({
+      lists: a
+    });
+  }
+
+  // TODO: this needs fixing
+  editCard(text, listId, cardId) {
+    const listIndex = findIndex(this.state.lists, listId);
+    const cardIndex = findIndex(this.state.lists[listIndex].cards, cardId);
+    const listToEdit = this.state.lists;
+    const formattedComment = {
+      id: cardIndex,
+      text: text
+    };
+    listToEdit[listIndex].cards[cardIndex] = formattedComment;
+    this.setState({
+      lists: listToEdit
+    });
+  }
 
   render() {
     return (
       <div className="kanban-board">
-      {this.state.lists.map((list) => {
-        return (
-          <div className="kanban-list" key={list.id}>
-            <List 
-              editCard={this.props.editCard}
-              updateCards={this.updateCards} 
-              list={list}
-            />
-        </div>);
+        {this.state.lists.map((list) => {
+          return (
+            <div className="kanban-list" key={list.id}>
+              <List 
+                editCard={this.editCard}
+                updateCards={this.updateCards} 
+                list={list}
+              />
+          </div>);
         })}
       </div>
     );
@@ -98,7 +101,5 @@ function findIndex(lists, id) {
     }
   }
 }
-
-
 
 export default Trello;

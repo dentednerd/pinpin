@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ListAdd from './ListAdd';
+import AddACard from './AddACard';
 import Card from './Card';
 
 class List extends React.Component {
@@ -14,7 +14,7 @@ class List extends React.Component {
               <Card editCard={this.props.editCard} id={this.props.id} key={card.id} card={card}/>
             );
           })}
-        <ListAdd id={this.props.list.id} updateCards={this.props.updateCards} />
+        <AddACard id={this.props.list.id} updateCards={this.props.updateCards} />
       </div>
     );
   }

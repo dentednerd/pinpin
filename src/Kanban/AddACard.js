@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ListAdd extends React.Component {
+class AddACard extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -34,12 +34,12 @@ class ListAdd extends React.Component {
         {
           this.state.showForm
           ? <form className="ListForm" onSubmit={this.handleSubmit} >
-            <textarea className='ListAddForm' onKeyPress={this.handleEnterKeyPress}/>
+            <textarea className='AddACardForm' onKeyPress={this.handleEnterKeyPress}/>
             <button className='button is-success' type="submit">Add</button>
             <button onClick={this.toggleForm} className='delete is-large' />
           </form>
           : <button href="#" className="AddLink" onClick={this.toggleForm}>
-            <div className="ListAdd">
+            <div className="AddACard">
                 Add a card...
             </div>
           </button>
@@ -47,12 +47,11 @@ class ListAdd extends React.Component {
       </div>
     );
   }
-
 }
 
-ListAdd.propTypes = {
+AddACard.propTypes = {
   id: PropTypes.string.isRequired,
   updateCards: PropTypes.func.isRequired
 };
 
-export default ListAdd;
+export default AddACard;
