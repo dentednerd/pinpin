@@ -7,24 +7,21 @@ import Card from './Card';
 class List extends React.Component {
   render () {
     return (
-      <div className="List">
-        <h2>{this.props.list.title}</h2>
-          {this.props.list.cards.map((card) => {
+      <div className="list">
+          {this.props.cards.map((card) => {
             return (
-              <Card editCard={this.props.editCard} id={this.props.id} key={card.id} card={card}/>
+              <Card deleteCard={this.props.deleteCard} key={card.id} card={card}/>
             );
           })}
-        <AddACard id={this.props.list.id} updateCards={this.props.updateCards} />
+        <AddACard addCard={this.props.addCard} />
       </div>
     );
   }
 }
 
 List.propTypes = {
-    editListTitle: PropTypes.func.isRequired,
-    list: PropTypes.object.isRequired,
-    updateCards: PropTypes.func.isRequired,
-    editCard: PropTypes.func.isRequired
+  cards: PropTypes.array.isRequired,
+  deleteCard: PropTypes.func.isRequired
 };
 
 export default List;

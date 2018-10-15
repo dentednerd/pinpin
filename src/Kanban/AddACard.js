@@ -20,11 +20,12 @@ class AddACard extends React.Component {
   handleSubmit (event) {
     event.preventDefault();
     const newCard = event.target.children[0].value;
-    this.props.updateCards(newCard, this.props.id);
+    this.props.addCard(newCard, this.props.id);
+    this.toggleForm();
   }
   handleEnterKeyPress (e) {
     if (e && e.key === 'Enter') {
-      this.props.updateCards(document.forms[0].childNodes[0].value, this.props.id);
+      this.props.addCard(document.forms[0].childNodes[0].value, this.props.id);
     }
   }
 
@@ -34,15 +35,13 @@ class AddACard extends React.Component {
         {
           this.state.showForm
           ? <form className="ListForm" onSubmit={this.handleSubmit} >
-            <textarea className='AddACardForm' onKeyPress={this.handleEnterKeyPress}/>
-            <button className='button is-success' type="submit">Add</button>
-            <button onClick={this.toggleForm} className='delete is-large' />
-          </form>
-          : <button href="#" className="AddLink" onClick={this.toggleForm}>
-            <div className="AddACard">
-                Add a card...
-            </div>
-          </button>
+              <textarea className='AddACardForm' onKeyPress={this.handleEnterKeyPress}/>
+              <button className='edit-card-button' type="submit">Add</button>
+              <button onClick={this.toggleForm} className='edit-card-button'>Close</button>
+            </form>
+          : <button href="#" className="edit-card-button" onClick={this.toggleForm}>
+              Add a task...
+            </button>
         }
       </div>
     );
@@ -50,8 +49,7 @@ class AddACard extends React.Component {
 }
 
 AddACard.propTypes = {
-  id: PropTypes.string.isRequired,
-  updateCards: PropTypes.func.isRequired
+  addCard: PropTypes.func.isRequired
 };
 
 export default AddACard;

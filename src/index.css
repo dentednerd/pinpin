@@ -94,3 +94,62 @@ body {
   margin: 8px auto;
   overflow-y: auto;
 }
+
+.to-do-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 5vh 0;
+}
+
+.to-do-list a {
+  text-decoration: none;
+}
+
+.to-do-list .edit-card-button {
+  background: transparent;
+  border: solid 3px white;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+}
+
+.to-do-list .list {
+  width: 25vw;
+}
+
+.to-do-list .list .card, .to-do-list textarea {
+  background: #828dac;
+  border-radius: 6px;
+  font-size: 14px;
+  color: white;
+  margin-bottom: 6px;
+  padding: 0 16px;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items:center;
+  height: 50px;
+  width: calc(100% - 32px);
+}
+
+.to-do-list textarea {
+  resize: none;
+  border: none;
+  line-height: 50px;
+}
+
+.to-do-list .list .card:hover { 
+  background-color:#d3d3d3;
+} 
+
+.to-do-list .list .card .delete-card {
+  background: white;
+  border: solid 1px white;
+  border-radius: 4px;
+  color: #828dac;
+  box-shadow: 0;
+  font-size: 14px;
+}
+
