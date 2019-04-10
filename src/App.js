@@ -24,47 +24,33 @@ class App extends React.Component {
   render() {
     return (
       <main className="App">
-  
-        <Helmet>
-          <title>
-            pinpin
-          </title>
-          <meta name="description" content="pinpin" />
-        </Helmet>
-
         <section className="grid">
+          <section className="left">
+            <Greeter />
+          </section>
 
-        <section className="left">
-          <Greeter />
-        </section>
-
-        <section className="right">
-  
-          {this.state.visible === "emoji" && (
-            <div className="emoji">
-              <EmojiSearch />
-            </div>
-          )}
-    
-          {this.state.visible === "dictionary" && (
-            <div className="dictionary">
-              <DictionarySearch />
-            </div>
-          )}
-    
-          {this.state.visible === "calculator" && (
-            <div className="calculator">
-              <Calculator />
-            </div>
-          )}
-
-          {this.state.visible === "kanban" && (
-            <div className="kanban">
-              <Kanban />
-            </div>
-          )}
-
-        </section>
+          <section className="right">
+            {this.state.visible === "emoji" && (
+              <div className="emoji">
+                <EmojiSearch />
+              </div>
+            )}
+            {this.state.visible === "dictionary" && (
+              <div className="dictionary">
+                <DictionarySearch />
+              </div>
+            )}
+            {this.state.visible === "calculator" && (
+              <div className="calculator">
+                <Calculator />
+              </div>
+            )}
+            {this.state.visible === "kanban" && (
+              <div className="kanban">
+                <Kanban />
+              </div>
+            )}
+          </section>
 
         </section>
 
