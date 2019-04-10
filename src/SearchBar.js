@@ -11,6 +11,7 @@ class SearchBar extends React.Component {
                 type='text' 
                 onChange={this.handleChange} 
                 value={this.props.searchTerm}
+                placeholder={this.props.placeholder}
             />
         );
     }

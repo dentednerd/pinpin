@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import Greeter from './Greeter';
 import EmojiSearch from './EmojiSearch';
 import DictionarySearch from './DictionarySearch';
 import Calculator from './Calculator';
@@ -20,10 +21,6 @@ class App extends React.Component {
     this.setState({ visible: buttonName });
   };
 
-  // convert to stateful
-  // add buttons
-  // buttons trigger tiny apps
-
   render() {
     return (
       <main className="App">
@@ -35,19 +32,13 @@ class App extends React.Component {
           <meta name="description" content="pinpin" />
         </Helmet>
 
+        <section className="grid">
 
-        <section className="top">
-
-          <h1>pinpin</h1>
-
-          <Chooser handleClick={this.handleClick} appName="emoji" />
-          <Chooser handleClick={this.handleClick} appName="dictionary" />
-          <Chooser handleClick={this.handleClick} appName="calculator" />
-          <Chooser handleClick={this.handleClick} appName="kanban" />
-
+        <section className="left">
+          <Greeter />
         </section>
 
-        <section className="bottom">
+        <section className="right">
   
           {this.state.visible === "emoji" && (
             <div className="emoji">
@@ -74,6 +65,16 @@ class App extends React.Component {
           )}
 
         </section>
+
+        </section>
+
+        <footer>
+          <Chooser handleClick={this.handleClick} appName="emoji" />
+          <Chooser handleClick={this.handleClick} appName="dictionary" />
+          <Chooser handleClick={this.handleClick} appName="calculator" />
+          <Chooser handleClick={this.handleClick} appName="kanban" />
+          <span>pinpin</span>
+        </footer>
         
       </main>
     );

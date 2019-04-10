@@ -25,6 +25,7 @@ class EmojiSearch extends React.Component {
         <SearchBar
             searchTerm={this.state.searchTerm} 
             updateSearchTerm={this.updateSearchTerm} 
+            placeholder="Search for emoji"
         />
 
         {this.state.searchTerm !== "" && (

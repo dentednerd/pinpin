@@ -25,6 +25,7 @@ class DictionarySearch extends React.Component {
         <SearchBar
             searchTerm={this.state.searchTerm} 
             updateSearchTerm={this.updateSearchTerm} 
+            placeholder="Look up a word"
         />
 
         {this.state.searchTerm !== "" && (
