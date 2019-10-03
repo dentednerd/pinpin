@@ -1,10 +1,12 @@
 import React from 'react';
+import { getCode } from 'country-list';
 import Greeter from './Greeter';
 import EmojiSearch from './EmojiSearch';
 import DictionarySearch from './DictionarySearch';
 import Calculator from './Calculator';
 import Kanban from './Kanban';
 import Chooser from './Chooser';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -56,7 +58,42 @@ class App extends React.Component {
     })
   }
 
+
   render() {
+    navigator.geolocation.getCurrentPosition(success, error);
+    function success(position) {
+        console.log('LAT:', position.coords.latitude)
+        console.log('LNG:', position.coords.longitude)
+        console.log('POSITION:', position);
+
+        var reverseGeo = 'https://eu1.locationiq.com/v1/reverse.php?key=a08df7cb731b67&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&format=json';
+
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', () => {
+          console.log(xhr.responseText);
+        })
+        xhr.open('GET', reverseGeo);
+        xhr.send();
+
+        const location = JSON.stringify(reverseGeo);
+        console.log(location);
+
+        // var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
+
+        // const location = JSON.stringify(GEOCODING)
+        // console.log(location)
+    }
+
+    function error(err) {
+        console.log(err)
+    }
+
+
+    // OpenWeather API key = 9ce56d82d3380200bba32017c0ba1d6b
+
+    // url looks like https://api.openweathermap.org/data/2.5/weather?q=Manchester,UK&appid=9ce56d82d3380200bba32017c0ba1d6b
+
+    console.log(getCode(England));
     return (
       <main className="App">
         <section className="grid">
@@ -93,7 +130,7 @@ class App extends React.Component {
           <Chooser handleClick={this.openEmoji} appName="emoji" />
           <Chooser handleClick={this.openDictionary} appName="dictionary" />
           <Chooser handleClick={this.openCalculator} appName="calculator" />
-          <Chooser handleClick={this.openKanban} appName="kanban" />
+          <Chooser handleClick={this.openKanban} appName="todo" />
           <span>pinpin</span>
         </footer>
         

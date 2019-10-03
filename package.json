@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "country-list": "^2.2.0",
     "dayjs": "^1.8.12",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
