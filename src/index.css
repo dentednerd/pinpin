@@ -6,6 +6,7 @@ body {
   background-image: linear-gradient(to bottom right, #ffafbd 0%, #ffc3a0 100%);
   color: white;
   font-size: 16px;
+  overflow: hidden;
 }
 
 .App {
@@ -38,6 +39,7 @@ body {
 }
 
 .App footer {
+  background-color: transparent;
   width: 100vw;
   max-width: 100vw;
   padding: 1em 2em;
@@ -88,6 +90,7 @@ body {
 }
 
 .App .emoji, .App .dictionary, .App .calculator {
+  background-image: linear-gradient(to right, transparent, transparent 10%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2));
   height: 50vh;
   max-height: 50vh;
   width: 75vw;
