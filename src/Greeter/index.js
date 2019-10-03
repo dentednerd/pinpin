@@ -24,23 +24,12 @@ const sectionOfDay = () => {
   if (amPm === 'PM' && hour >= 17) { return 'evening' }
 }
 
-class Greeter extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userName: 'you'
-    }
-  }
-
-  render() {
-    return (
-      <section className="greeter">
-        <h1>Good {sectionOfDay()}, {this.state.userName}.</h1>
-        <p>It's a sunny {dayOfWeek} {sectionOfDay()} in Manchester.</p>
-        <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
-      </section>
-    )
-  }
-};
+const Greeter = (props) => (
+  <section className="greeter">
+    <h1>Good {sectionOfDay()}, {props.name}.</h1>
+    <p>It's a sunny {dayOfWeek} {sectionOfDay()} in {props.location.split(',')[0]}.</p>
+    <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
+  </section>
+);
 
 export default Greeter;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { getCode } from 'country-list';
+import axios from 'axios';
 import Greeter from './Greeter';
 import EmojiSearch from './EmojiSearch';
 import DictionarySearch from './DictionarySearch';
 import Calculator from './Calculator';
 import Kanban from './Kanban';
 import Chooser from './Chooser';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -15,13 +14,27 @@ class App extends React.Component {
       isEmojiActive: false,
       isDictionaryActive: false,
       isCalculatorActive: false,
-      isKanbanActive: false
+      isKanbanActive: false,
+      location: localStorage.getItem('pinpinLocation'),
+      weather: null
     };
     this.openEmoji = this.openEmoji.bind(this);
     this.openDictionary = this.openDictionary.bind(this);
     this.openCalculator = this.openCalculator.bind(this);
-    this.openKanban = this.openKanban.bind(this)
+    this.openKanban = this.openKanban.bind(this);
+    this.resetName = this.resetName.bind(this);
+    this.resetLocation = this.resetLocation.bind(this);
   }
+
+  componentDidMount() {
+    const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + this.state.location + '&appid=9ce56d82d3380200bba32017c0ba1d6b';
+    axios.get(weatherUrl)
+      .then(res => {
+        this.setState({ weather: res.data });
+      }
+    )
+  }
+
 
   openEmoji = () => {
     this.setState({ 
@@ -57,48 +70,33 @@ class App extends React.Component {
       kanbanActive: true
     })
   }
+  resetName = () => {
+    localStorage.removeItem('pinpinName');
+    localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
+  }
 
+  resetLocation = () => {
+    localStorage.removeItem('pinpinLocation');
+    localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
+  }
 
   render() {
-    navigator.geolocation.getCurrentPosition(success, error);
-    function success(position) {
-        console.log('LAT:', position.coords.latitude)
-        console.log('LNG:', position.coords.longitude)
-        console.log('POSITION:', position);
-
-        var reverseGeo = 'https://eu1.locationiq.com/v1/reverse.php?key=a08df7cb731b67&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&format=json';
-
-        const xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', () => {
-          console.log(xhr.responseText);
-        })
-        xhr.open('GET', reverseGeo);
-        xhr.send();
-
-        const location = JSON.stringify(reverseGeo);
-        console.log(location);
-
-        // var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
-
-        // const location = JSON.stringify(GEOCODING)
-        // console.log(location)
+    if (localStorage.getItem('pinpinName') === null) {
+      localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
     }
 
-    function error(err) {
-        console.log(err)
+    if (localStorage.getItem('pinpinLocation') === null) {
+      localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
     }
 
+    const name = localStorage.getItem('pinpinName');
+    console.log(this.state.weather !== null && this.state.weather.weather[0].main);
 
-    // OpenWeather API key = 9ce56d82d3380200bba32017c0ba1d6b
-
-    // url looks like https://api.openweathermap.org/data/2.5/weather?q=Manchester,UK&appid=9ce56d82d3380200bba32017c0ba1d6b
-
-    console.log(getCode(England));
     return (
       <main className="App">
         <section className="grid">
           <section className="left">
-            <Greeter />
+            <Greeter name={name} location={this.state.location} />
           </section>
 
           <section className="right">
@@ -131,6 +129,8 @@ class App extends React.Component {
           <Chooser handleClick={this.openDictionary} appName="dictionary" />
           <Chooser handleClick={this.openCalculator} appName="calculator" />
           <Chooser handleClick={this.openKanban} appName="todo" />
+          <button onClick={this.resetName}>reset name</button>
+          <button onClick={this.resetLocation}>reset location</button>
           <span>pinpin</span>
         </footer>
         
