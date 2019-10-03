@@ -24,10 +24,28 @@ const sectionOfDay = () => {
   if (amPm === 'PM' && hour >= 17) { return 'evening' }
 }
 
+const weatherConditions = {
+  "Thunderstorm": "stormy",
+  "Drizzle": "drizzly",
+  "Rain": "rainy",
+  "Snow": "snowy",
+  "Mist": "misty",
+  "Smoke": "smoky",
+  "Haze": "hazy",
+  "Dust": "dusty",
+  "Fog": "foggy",
+  "Sand": "sandy",
+  "Ash": "ashy",
+  "Squall": "stormy",
+  "Tornado": "stormy",
+  "Clear": "sunny",
+  "Clouds": "cloudy"
+}
+
 const Greeter = (props) => (
   <section className="greeter">
     <h1>Good {sectionOfDay()}, {props.name}.</h1>
-    <p>It's a sunny {dayOfWeek} {sectionOfDay()} in {props.location.split(',')[0]}.</p>
+    <p>It's a {weatherConditions[props.condition]} {dayOfWeek} {sectionOfDay()} in {props.location.split(',')[0]}.</p>
     <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
   </section>
 );

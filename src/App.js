@@ -35,7 +35,6 @@ class App extends React.Component {
     )
   }
 
-
   openEmoji = () => {
     this.setState({ 
       emojiActive: true,
@@ -90,13 +89,13 @@ class App extends React.Component {
     }
 
     const name = localStorage.getItem('pinpinName');
-    console.log(this.state.weather !== null && this.state.weather.weather[0].main);
+    const condition = this.state.weather !== null && this.state.weather.weather[0].main;
 
     return (
       <main className="App">
         <section className="grid">
           <section className="left">
-            <Greeter name={name} location={this.state.location} />
+            <Greeter name={name} location={this.state.location} condition={condition} />
           </section>
 
           <section className="right">

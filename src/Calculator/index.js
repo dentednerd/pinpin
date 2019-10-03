@@ -2,6 +2,7 @@ import React from "react";
 import Display from "./component/Display";
 import ButtonPanel from "./component/ButtonPanel";
 import calculate from "./logic/calculate";
+import './index.css';
 
 // TODO: needs refactoring and restyling
 class Calculator extends React.Component {
@@ -20,7 +21,7 @@ class Calculator extends React.Component {
 
   render() {
     return (
-      <div className="component-app">
+      <div className="calc-container">
         <Display value={this.state.next || this.state.total || "0"} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>

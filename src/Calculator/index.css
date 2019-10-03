@@ -1,50 +1,66 @@
-html {
-  height: 100%;
-  font-size: 10px;
+.calc-container {
+  width: 10rem;
+  margin: calc(25vh - 10rem) auto;
 }
 
-body {
-  background-color: black;
-  margin: 0;
+.calc-display {
+  background-color: white;
+  color: darkslategrey;
+  text-align: right;
+  /* font-weight: 200;
+  flex: 0 0 auto; */
+  width: 100%;
+  max-width: 10rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.calc-display > div {
+  font-size: 16px;
+  padding: 8px
+}
+
+.calc-panel {
+  background-color: transparent;
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 10rem;
+  /* flex: 1 0 auto; */
+}
+
+.calc-panel .calc-button-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.component-button {
+  display: inline-flex;
+  width: 25%;
+  flex: 1 0 auto;
+}
+
+.component-button button {
+  height: 2rem;
+  width: 2rem;
+  max-width: 2rem;
+  font-size: 16px;
+  margin: 0 4px 4px 0;
+  flex: 1 0 auto;
   padding: 0;
-  font-family: sans-serif;
-  height: 100%;
 }
 
-#root {
-  height: 100%;
+.component-button button.wide {
+  width: 3rem;
+  max-width: 3rem;
+  margin-right: 6px;
 }
 
-body .github-fork-ribbon:before {
-  background-color: #333;
+.component-button:last-child button {
+  margin-right: 0;
 }
 
-@media screen and (max-width: 400px) {
-  .github-fork-ribbon {
-    display: none;
-  }
-}
-
-@media (min-width: 400px) and (min-height: 400px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 500px) and (min-height: 500px) {
-  html {
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 600px) and (min-height: 600px) {
-  html {
-    font-size: 40px;
-  }
-}
-
-@media (min-width: 800px) and (min-height: 800px) {
-  html {
-    font-size: 50px;
-  }
+.component-button.orange button {
+  background-color: #f5923e;
+  color: white;
 }

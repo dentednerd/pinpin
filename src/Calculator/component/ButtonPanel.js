@@ -2,8 +2,6 @@ import Button from "./Button";
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./ButtonPanel.css";
-
 class ButtonPanel extends React.Component {
   handleClick = buttonName => {
     this.props.clickHandler(buttonName);
@@ -11,8 +9,8 @@ class ButtonPanel extends React.Component {
 
   render() {
     return (
-      <div className="button-panel">
-        <div className="button-row">
+      <div className="calc-panel">
+        <div className="calc-button-row">
           <Button name="AC" clickHandler={this.handleClick} />
           <Button name="+/-" clickHandler={this.handleClick} />
           <Button name="%" clickHandler={this.handleClick} />
