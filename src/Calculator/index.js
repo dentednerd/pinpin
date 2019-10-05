@@ -1,11 +1,10 @@
 import React from "react";
+import styled from '@emotion/styled';
 import Display from "./component/Display";
 import ButtonPanel from "./component/ButtonPanel";
 import calculate from "./logic/calculate";
-import './index.css';
 
-// TODO: needs refactoring and restyling
-class Calculator extends React.Component {
+export default class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +19,15 @@ class Calculator extends React.Component {
   };
 
   render() {
+    const StyledCalculator = styled.div`
+      width: 100%;
+      margin: 0 auto;
+    `;
     return (
-      <div className="calc-container">
+      <StyledCalculator>
         <Display value={this.state.next || this.state.total || "0"} />
         <ButtonPanel clickHandler={this.handleClick} />
-      </div>
+      </StyledCalculator>
     );
   }
 }
-export default Calculator;

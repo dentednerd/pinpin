@@ -2,28 +2,30 @@ import React from 'react';
 import axios from 'axios';
 import Greeter from './Greeter';
 import EmojiSearch from './EmojiSearch';
-import DictionarySearch from './DictionarySearch';
+import Beats from './Beats';
 import Calculator from './Calculator';
-import Kanban from './Kanban';
-import Chooser from './Chooser';
+import Todo from './Todo';
+import Settings from './Settings';
+import Chooser from './atoms/Chooser';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEmojiActive: false,
-      isDictionaryActive: false,
+      isBeatsActive: false,
       isCalculatorActive: false,
-      isKanbanActive: false,
+      isTodoActive: false,
+      isSettingsActive: false,
+      name: localStorage.getItem('pinpinName'),
       location: localStorage.getItem('pinpinLocation'),
       weather: null
     };
     this.openEmoji = this.openEmoji.bind(this);
-    this.openDictionary = this.openDictionary.bind(this);
+    this.openBeats = this.openBeats.bind(this);
     this.openCalculator = this.openCalculator.bind(this);
-    this.openKanban = this.openKanban.bind(this);
-    this.resetName = this.resetName.bind(this);
-    this.resetLocation = this.resetLocation.bind(this);
+    this.openTodo = this.openTodo.bind(this);
+    this.openSettings = this.openSettings.bind(this);
   }
 
   componentDidMount() {
@@ -37,58 +39,64 @@ class App extends React.Component {
 
   openEmoji = () => {
     this.setState({ 
-      emojiActive: true,
-      dictionaryActive: false,
-      calculatorActive: false,
-      kanbanActive: false
+      isEmojiActive: true,
+      isBeatsActive: false,
+      isCalculatorActive: false,
+      isTodoActive: false,
+      isSettingsActive: false,
     })
   }
 
-  openDictionary = () => {
+  openBeats = () => {
     this.setState({
-      emojiActive: false,
-      dictionaryActive: true,
-      calculatorActive: false,
-      kanbanActive: false
+      isEmojiActive: false,
+      isBeatsActive: true,
+      isCalculatorActive: false,
+      isTodoActive: false,
+      isSettingsActive: false,
     })
   }
 
   openCalculator = () => {
     this.setState({
-      emojiActive: false,
-      dictionaryActive: false,
-      calculatorActive: true,
-      kanbanActive: false})
-  }
-
-  openKanban = () => {
-    this.setState({
-      emojiActive: false,
-      dictionaryActive: false,
-      calculatorActive: false,
-      kanbanActive: true
+      isEmojiActive: false,
+      isBeatsActive: false,
+      isCalculatorActive: true,
+      isTodoActive: false,
+      isSettingsActive: false,
     })
   }
-  resetName = () => {
-    localStorage.removeItem('pinpinName');
-    localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
+
+  openTodo = () => {
+    this.setState({
+      isEmojiActive: false,
+      isBeatsActive: false,
+      isCalculatorActive: false,
+      isTodoActive: true,
+      isSettingsActive: false,
+    })
   }
 
-  resetLocation = () => {
-    localStorage.removeItem('pinpinLocation');
-    localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
+  openSettings = () => {
+    this.setState({
+      isEmojiActive: false,
+      isBeatsActive: false,
+      isCalculatorActive: false,
+      isTodoActive: false,
+      isSettingsActive: true,
+    })
   }
 
   render() {
-    if (localStorage.getItem('pinpinName') === null) {
+    if (this.state.name === null) {
       localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
     }
 
-    if (localStorage.getItem('pinpinLocation') === null) {
+    if (this.state.location === null) {
       localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
     }
 
-    const name = localStorage.getItem('pinpinName');
+    const name = this.state.name === 'null' ? 'you' : this.state.name;
     const condition = this.state.weather !== null && this.state.weather.weather[0].main;
 
     return (
@@ -99,37 +107,23 @@ class App extends React.Component {
           </section>
 
           <section className="right">
-            {this.state.emojiActive && (
-              <div className="emoji">
-                <EmojiSearch />
-              </div>
-            )}
-            {this.state.dictionaryActive && (
-              <div className="dictionary">
-                <DictionarySearch />
-              </div>
-            )}
-            {this.state.calculatorActive && (
-              <div className="calculator">
-                <Calculator />
-              </div>
-            )}
-            {this.state.kanbanActive && (
-              <div className="kanban">
-                <Kanban />
-              </div>
-            )}
+            <div className="wrapper">
+              {this.state.isEmojiActive && <EmojiSearch />}
+              {this.state.isBeatsActive && <Beats />}
+              {this.state.isCalculatorActive && <Calculator />}
+              {this.state.isTodoActive && <Todo />}
+              {this.state.isSettingsActive && <Settings />}
+            </div>
           </section>
 
         </section>
 
         <footer>
           <Chooser handleClick={this.openEmoji} appName="emoji" />
-          <Chooser handleClick={this.openDictionary} appName="dictionary" />
+          <Chooser handleClick={this.openBeats} appName="calm beats" />
           <Chooser handleClick={this.openCalculator} appName="calculator" />
-          <Chooser handleClick={this.openKanban} appName="todo" />
-          <button onClick={this.resetName}>reset name</button>
-          <button onClick={this.resetLocation}>reset location</button>
+          <Chooser handleClick={this.openTodo} appName="todo" />
+          <Chooser handleClick={this.openSettings} appName="settings" />
           <span>pinpin</span>
         </footer>
         

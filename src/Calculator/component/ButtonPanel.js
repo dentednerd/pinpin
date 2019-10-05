@@ -1,6 +1,6 @@
-import Button from "./Button";
 import React from "react";
-import PropTypes from "prop-types";
+import styled from '@emotion/styled';
+import CalcButton from "./CalcButton";
 
 class ButtonPanel extends React.Component {
   handleClick = buttonName => {
@@ -8,42 +8,62 @@ class ButtonPanel extends React.Component {
   };
 
   render() {
+    const StyledPanel = styled.div`
+      background-color: transparent;
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
+      margin: 0 auto;
+    
+      .row {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+      }
+
+      .pink {
+        background-color: #ffafbd;
+      }
+
+      .wide {
+        width: calc(50% - 0.25rem);
+      }
+    `;
     return (
-      <div className="calc-panel">
-        <div className="calc-button-row">
-          <Button name="AC" clickHandler={this.handleClick} />
-          <Button name="+/-" clickHandler={this.handleClick} />
-          <Button name="%" clickHandler={this.handleClick} />
-          <Button name="÷" clickHandler={this.handleClick} orange />
+      <StyledPanel>
+        <div className="row">
+          <CalcButton name="AC" clickHandler={this.handleClick} className="pink" />
+          <CalcButton name="+/-" clickHandler={this.handleClick} className="pink" />
+          <CalcButton name="%" clickHandler={this.handleClick} className="pink" />
+          <CalcButton name="÷" clickHandler={this.handleClick} className="pink" />
         </div>
-        <div className="button-row">
-          <Button name="7" clickHandler={this.handleClick} />
-          <Button name="8" clickHandler={this.handleClick} />
-          <Button name="9" clickHandler={this.handleClick} />
-          <Button name="x" clickHandler={this.handleClick} orange />
+        <div className="row">
+          <CalcButton name="7" clickHandler={this.handleClick} />
+          <CalcButton name="8" clickHandler={this.handleClick} />
+          <CalcButton name="9" clickHandler={this.handleClick} />
+          <CalcButton name="x" clickHandler={this.handleClick} className="pink" />
         </div>
-        <div className="button-row">
-          <Button name="4" clickHandler={this.handleClick} />
-          <Button name="5" clickHandler={this.handleClick} />
-          <Button name="6" clickHandler={this.handleClick} />
-          <Button name="-" clickHandler={this.handleClick} orange />
+        <div className="row">
+          <CalcButton name="4" clickHandler={this.handleClick} />
+          <CalcButton name="5" clickHandler={this.handleClick} />
+          <CalcButton name="6" clickHandler={this.handleClick} />
+          <CalcButton name="-" clickHandler={this.handleClick} className="pink" />
         </div>
-        <div className="button-row">
-          <Button name="1" clickHandler={this.handleClick} />
-          <Button name="2" clickHandler={this.handleClick} />
-          <Button name="3" clickHandler={this.handleClick} />
-          <Button name="+" clickHandler={this.handleClick} orange />
+        <div className="row">
+          <CalcButton name="1" clickHandler={this.handleClick} />
+          <CalcButton name="2" clickHandler={this.handleClick} />
+          <CalcButton name="3" clickHandler={this.handleClick} />
+          <CalcButton name="+" clickHandler={this.handleClick} className="pink" />
         </div>
-        <div className="button-row">
-          <Button name="0" clickHandler={this.handleClick} wide />
-          <Button name="." clickHandler={this.handleClick} />
-          <Button name="=" clickHandler={this.handleClick} orange />
+        <div className="row">
+          <CalcButton name="0" clickHandler={this.handleClick} className="wide" />
+          <CalcButton name="." clickHandler={this.handleClick} />
+          <CalcButton name="=" clickHandler={this.handleClick} className="pink" />
         </div>
-      </div>
+      </StyledPanel>
     );
   }
 }
-ButtonPanel.propTypes = {
-  clickHandler: PropTypes.func,
-};
+
 export default ButtonPanel;

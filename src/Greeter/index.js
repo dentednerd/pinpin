@@ -24,30 +24,52 @@ const sectionOfDay = () => {
   if (amPm === 'PM' && hour >= 17) { return 'evening' }
 }
 
-const weatherConditions = {
-  "Thunderstorm": "stormy",
-  "Drizzle": "drizzly",
-  "Rain": "rainy",
-  "Snow": "snowy",
-  "Mist": "misty",
-  "Smoke": "smoky",
-  "Haze": "hazy",
-  "Dust": "dusty",
-  "Fog": "foggy",
-  "Sand": "sandy",
-  "Ash": "ashy",
-  "Squall": "stormy",
-  "Tornado": "stormy",
-  "Clear": "sunny",
-  "Clouds": "cloudy"
+const Greeter = (props) => {
+  const weatherCondition = () => {
+    switch(props.condition) {
+      case "Thunderstorm": 
+        return "a stormy";
+      case "Drizzle":
+        return "a drizzly";
+      case "Rain":
+        return "a rainy";
+      case "Snow":
+        return "a snowy";
+      case "Mist":
+        return "a misty";
+      case "Smoke":
+        return "a smoky";
+      case "Haze":
+        return "a hazy";
+      case "Dust":
+        return "a dusty";
+      case "Fog":
+        return "a foggy";
+      case "Sand":
+        return "a sandy";
+      case "Ash":
+        return "an ashy";
+      case "Squall":
+        return "a stormy";
+      case "Tornado":
+        return "a stormy";
+      case "Clear":
+        return "a sunny";
+      case "Clouds":
+        return "a cloudy";
+      default:
+        return null;
+    }
+  }
+
+  return (
+    <section className="greeter">
+      <h1>Good {sectionOfDay()}, {props.name}.</h1>
+      <p>It's {weatherCondition()} {dayOfWeek} {sectionOfDay()}{props.location && ` in ${props.location.split(',')[0]}`}.</p>
+      <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
+    </section>
+  );
 }
 
-const Greeter = (props) => (
-  <section className="greeter">
-    <h1>Good {sectionOfDay()}, {props.name}.</h1>
-    <p>It's a {weatherConditions[props.condition]} {dayOfWeek} {sectionOfDay()} in {props.location.split(',')[0]}.</p>
-    <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
-  </section>
-);
 
 export default Greeter;

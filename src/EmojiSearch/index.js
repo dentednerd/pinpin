@@ -1,9 +1,9 @@
-import React from 'react';
-import SearchBar from '../SearchBar';
+import React, { Fragment } from 'react';
+import SearchBar from '../atoms/SearchBar';
 import EmojiResults from './EmojiResults';
 import filterEmoji from './utils/filterEmoji';
 
-class EmojiSearch extends React.Component {
+export default class EmojiSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,29 +14,24 @@ class EmojiSearch extends React.Component {
 
   updateSearchTerm (newTerm) {
     this.setState({
-        searchTerm: newTerm
+      searchTerm: newTerm
     })
   }
 
   render () {
     return (
-      <div>
-        
+      <Fragment>
         <SearchBar
-            searchTerm={this.state.searchTerm} 
-            updateSearchTerm={this.updateSearchTerm} 
-            placeholder="Search for emoji"
+          searchTerm={this.state.searchTerm} 
+          updateSearchTerm={this.updateSearchTerm} 
+          placeholder="Search for emoji"
         />
-
         {this.state.searchTerm !== "" && (
           <EmojiResults 
             emojis={filterEmoji(this.state.searchTerm)}
           />
         )}
-        
-      </div>
+      </Fragment>
     );
   }
 }
-
-export default EmojiSearch;
