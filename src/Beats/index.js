@@ -5,7 +5,7 @@ export default () => {
     <iframe
       title="soundcloud"
       width="100%"
-      height="150"
+      height="400"
       scrolling="no"
       frameborder="no"
       allow="autoplay"

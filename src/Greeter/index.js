@@ -64,7 +64,7 @@ const Greeter = (props) => {
 
   return (
     <section className="greeter">
-      <h1>Good {sectionOfDay()}, {props.name}.</h1>
+      <h1>Good {sectionOfDay()}, {props.name ? props.name : 'you'}.</h1>
       <p>It's {weatherCondition()} {dayOfWeek} {sectionOfDay()}{props.location && ` in ${props.location.split(',')[0]}`}.</p>
       <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
     </section>

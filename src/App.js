@@ -17,8 +17,8 @@ class App extends React.Component {
       isCalculatorActive: false,
       isTodoActive: false,
       isSettingsActive: false,
-      name: localStorage.getItem('pinpinName'),
-      location: localStorage.getItem('pinpinLocation'),
+      name: localStorage.getItem('pinpinName') || localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name')),
+      location: localStorage.getItem('pinpinLocation') || localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK')),
       weather: null
     };
     this.openEmoji = this.openEmoji.bind(this);
@@ -88,22 +88,13 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.name === null) {
-      localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
-    }
-
-    if (this.state.location === null) {
-      localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
-    }
-
-    const name = this.state.name === 'null' ? 'you' : this.state.name;
     const condition = this.state.weather !== null && this.state.weather.weather[0].main;
 
     return (
       <main className="App">
         <section className="grid">
           <section className="left">
-            <Greeter name={name} location={this.state.location} condition={condition} />
+            <Greeter name={this.state.name} location={this.state.location} condition={condition} />
           </section>
 
           <section className="right">
