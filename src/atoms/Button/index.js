@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 const StyledButton = styled.button`
   background-color: white;
   color: #828dac;
-  height: 3em;  
-  width: 10em;
+  height: 2em;  
+  width: 8em;
   font-size: 1rem;
   font-family: 'Pangolin', cursive;
   border: none;

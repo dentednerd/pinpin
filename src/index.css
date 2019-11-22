@@ -3,10 +3,25 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to bottom right, #ffafbd 0%, #ffc3a0 100%);
   color: white;
   font-size: 16px;
   overflow: hidden;
+}
+
+.dawn {
+  background-image: linear-gradient(to bottom right, #114b7f 0%, #b29c93 100%);
+}
+
+.day {
+  background-image: linear-gradient(to bottom right, #2F9DE2 0%, #fce284 100%);
+}
+
+.dusk {
+  background-image: linear-gradient(to bottom right, #828dac 0%, #af5e53 100%);
+}
+
+.night {
+  background-image: linear-gradient(to bottom right, #332E4A 0%, #828dac 100%);
 }
 
 .App {
@@ -23,23 +38,24 @@ body {
 .App .grid {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 90vw;
+  max-width: 90vw;
 }
 
-.App .grid .left, .App .grid .right {
-  width: 50vw;
-  height: calc(100vh - 6em);
+.App .grid section.left {
+  height: 80vh;
+  width: 60vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  font-size: 4vh;
 }
 
-.App .grid .right {
-  height: calc(50vh - 6rem);
-  width: calc(50vw - 6rem);
-  margin-right: 2rem;
+.App .grid section.right {
+  width: 40vw;
   padding: 2rem;
   justify-content: flex-start;
 }
@@ -54,49 +70,31 @@ body {
   background-color: transparent;
   width: 100vw;
   max-width: 100vw;
-  padding: 1em 6.25vw;
+  padding: 1em 5vw;
   margin: 0;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.App footer button {
+  margin-right: 2vw;
 }
 
 .App footer span {
   font-family: 'Pangolin', cursive;
-  color: #828dac;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .App h1 {
   font-family: 'Pangolin', cursive;
   font-weight: lighter;
-  font-size: 64px;
+  font-size: 8vh;
   margin: 0px;
-}
-
-.App .top {
-  height: 50vh;
-  width: 100vw;
-  color: white;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.App .bottom {
-  height: 50vh;
-  width: 100vw;
-  color: white;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .greeter {
   text-align: left;
-  font-size: 2rem;
-  width: 37.5vw;
 }
