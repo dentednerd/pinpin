@@ -1,3 +1,4 @@
+import useInterval from './useInterval';
 import dayjs from 'dayjs';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(AdvancedFormat);
@@ -11,7 +12,13 @@ const setLocalName = () => {
 const getLocalLocation = () => localStorage.getItem('pinpinLocation');
 const setLocalLocation = () => {
   localStorage.removeItem('pinpinLocation');
-  localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
+  localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'Manchester,UK'));
+}
+
+const getLocalWeather = () => localStorage.getItem('pinpinWeather');
+const setLocalWeather = (weather) => {
+  localStorage.removeItem('pinpinWeather');
+  localStorage.setItem('pinpinWeather', weather);
 }
 
 const amPm = dayjs().format('A');
@@ -41,7 +48,10 @@ export {
   setLocalName,
   getLocalLocation,
   setLocalLocation,
+  getLocalWeather,
+  setLocalWeather,
   hour,
   sectionOfDay,
-  currentTitle
+  currentTitle,
+  useInterval
 }

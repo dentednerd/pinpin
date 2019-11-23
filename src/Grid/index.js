@@ -24,7 +24,7 @@ const Left = styled.section`
 
 const Right = styled.section`
   width: 40vw;
-  padding: 2rem;
+  min-width: 40vw;
   justify-content: flex-start;
 `;
 

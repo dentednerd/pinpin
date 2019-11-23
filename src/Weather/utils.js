@@ -2,6 +2,25 @@ import dayjs from 'dayjs';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(AdvancedFormat);
 
+const week = {
+  0: 'Sunday',
+  1: 'Monday',
+  2: 'Tuesday',
+  3: 'Wednesday',
+  4: 'Thursday',
+  5: 'Friday',
+  6: 'Saturday'
+};
+
+const dayOfWeek = week[dayjs().day()];
+const amPm = dayjs().format('A');
+const hour = dayjs().format('HH');
+const sectionOfDay = () => {
+  if (amPm === 'AM') { return 'morning'}
+  if (amPm === 'PM' && hour < 17) { return 'afternoon'}
+  if (amPm === 'PM' && hour >= 17) { return 'evening' }
+}
+
 const weatherCondition = (condition) => {
   switch(condition) {
     case "Thunderstorm": 
@@ -31,7 +50,7 @@ const weatherCondition = (condition) => {
     case "Tornado":
       return "a stormy";
     case "Clear":
-      return "a sunny";
+      return hour >= 6 && hour <= 18 ? "a sunny" : "a clear";
     case "Clouds":
       return "a cloudy";
     default:
@@ -39,26 +58,7 @@ const weatherCondition = (condition) => {
   }
 };
 
-const week = {
-  0: 'Sunday',
-  1: 'Monday',
-  2: 'Tuesday',
-  3: 'Wednesday',
-  4: 'Thursday',
-  5: 'Friday',
-  6: 'Saturday'
-};
-
 const weatherKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-
-const dayOfWeek = week[dayjs().day()];
-const amPm = dayjs().format('A');
-const hour = dayjs().format('HH');
-const sectionOfDay = () => {
-  if (amPm === 'AM') { return 'morning'}
-  if (amPm === 'PM' && hour < 17) { return 'afternoon'}
-  if (amPm === 'PM' && hour >= 17) { return 'evening' }
-}
 
 export {
   weatherCondition,

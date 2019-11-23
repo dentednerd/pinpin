@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Helmet from 'react-helmet'
 import Grid from './Grid';
 import Footer from './Footer';
-import { hour, currentTitle } from './utils';
+import { hour, currentTitle, getLocalName, setLocalName, useInterval } from './utils';
 
 if (hour <= 3 || hour >= 21) {
   document.body.classList.add('night');
@@ -20,20 +20,20 @@ if (hour > 16 && hour <= 20) {
   document.body.classList.add('dusk');
 }
 
-
-
 const App = () => {
-  const [name, setName] = useState('you');
+  const [name, setName] = useState(getLocalName());
 
+  useInterval(() => {
+    setName(getLocalName());
+  }, 1000);
 
   useEffect(() => {
-    const storedName = localStorage.getItem('pinpinName');
-
+    const storedName = getLocalName();
     if (!storedName) {
-      localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
+      setLocalName();
     }
     setName(storedName);
-  })
+  }, [])
 
   return (
     <main className="App">

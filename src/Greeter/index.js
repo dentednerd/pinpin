@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
 import dayjs from 'dayjs';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
-import styled from '@emotion/styled';
+import { useInterval } from '../utils';
 import Weather from '../Weather';
+import { getLocalName, setLocalName } from '../utils';
+import {
+  sectionOfDay,
+  dayOfMonth,
+  month,
+} from './utils';
 
 dayjs.extend(AdvancedFormat);
-const amPm = dayjs().format('A');
-const dayOfMonth = dayjs().format('Do');
-const hour = dayjs().format('HH');
-const minute = dayjs().format('mm');
-const month = dayjs().format('MMMM');
-const sectionOfDay = () => {
-  if (amPm === 'AM') { return 'morning'}
-  if (amPm === 'PM' && hour < 17) { return 'afternoon'}
-  if (amPm === 'PM' && hour >= 17) { return 'evening' }
-}
 
 const Greeter = () => {
   const StyledGreeter = styled.section`
-    text-align: left;
-    animation: fadein 3s;
-
-    @keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+  text-align: left;
 
     h1 {
       font-family: 'Pangolin', cursive;
@@ -34,21 +25,27 @@ const Greeter = () => {
     }
   `;
 
-  const [name, setName] = useState('you');
+  const [name, setName] = useState(getLocalName());
+  const [time, setTime] = useState(dayjs().format('HH:mm'));
+
+  useInterval(() => {
+    setName(getLocalName());
+    setTime(dayjs().format('HH:mm'));
+  }, 1000);
 
   useEffect(() => {
-    const storedName = localStorage.getItem('pinpinName');
+    const storedName = getLocalName();
     if (!storedName) {
-      localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
+      setLocalName();
     }
     setName(storedName);
-  })
+  }, [])
 
   return (
     <StyledGreeter>
       <h1>Good {sectionOfDay()}, {name}.</h1>
       <Weather />
-      <p>Right now it's {hour}:{minute} on the {dayOfMonth} of {month}.</p>
+      <p>Right now it's {time} on the {dayOfMonth} of {month}.</p>
     </StyledGreeter>
   );
 }

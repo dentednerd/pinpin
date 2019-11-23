@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 const StyledCard = styled.div`
   background: #828dac;
   height: 2rem;
-  width: 30vw;
+  width: calc(40vw - 4rem);
   border: none;
   border-radius: 0.25rem;
   color: white;
-  margin: 0.5rem 0;
+  margin: 0 0 0.5rem;
   padding: 0 1rem;
   display: flex;
   flex-flow: row nowrap;

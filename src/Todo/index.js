@@ -7,11 +7,11 @@ const Todo = () => {
   const starterCards = [
     {
       id: v4(),
-      text: 'Click "pinpin" to change settings'
+      text: 'Click "pinpin" in the bottom right corner to change settings'
     },
     {
       id: v4(),
-      text: 'Then click me!'
+      text: 'Click a thought to remove it'
     },
   ]
 
@@ -49,13 +49,15 @@ const Todo = () => {
     localStorage.setItem('pinpinTodo', JSON.stringify([...newCards]));
   }
 
-  const StyledToDo = styled.div`
+  const StyledToDo = styled.section`
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: flex-start;
     margin: 0;
-    width: 100%;
+    width: 40vw;
+    min-width: 40vw;
 
     a {
       text-decoration: none;
@@ -69,8 +71,26 @@ const Todo = () => {
     }
   `;
 
+  const TitleCard = styled.section`
+    position: absolute;
+    top: -1.5rem;
+    right: 1rem;
+    height: 2rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: #717c9b;
+    color: #ffffff;
+    font-family: 'Pangolin', cursive;
+    padding: 0 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items:center;
+  `;
+
   return (
     <StyledToDo>
+      <TitleCard>keep your thoughts here</TitleCard>
       <List 
         cards={cards}
         deleteCard={deleteCard}

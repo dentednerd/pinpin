@@ -1,12 +1,26 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import AddACard from './AddACard';
 import Card from './Card';
+
+const StyledList = styled.div`
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-height: 75vh;
+  width: calc(40vw - 2rem);
+  min-width: calc(40vw - 2rem);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  overflow: hidden;
+`;
 
 const List = (props) => {
   const { cards, addCard, deleteCard } = props;
 
   return (
-    <div>
+    <StyledList>
       {cards.map((card) => (
         <Card
           deleteCard={() => deleteCard(card.id)}
@@ -15,7 +29,7 @@ const List = (props) => {
         />
       ))}
       <AddACard addCard={addCard} />
-    </div>
+    </StyledList>
   );
 }
 

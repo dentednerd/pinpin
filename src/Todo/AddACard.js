@@ -7,6 +7,7 @@ const AddButtons = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  min-width: calc(30vw + 2rem);
 `;
 
 const AddACard = (props) => {
@@ -55,7 +56,7 @@ const AddACard = (props) => {
           <Button
             href="#"
             onClick={() => toggleShowForm(!showForm)}
-            text='add task'
+            text='add thought'
           />
         )
       }

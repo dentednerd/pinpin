@@ -2,13 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const StyledInput = styled.input`
-  background-color: #b29c93;
+  background-color: #a4afce;
   color: white;
   height: 2rem;
   width: calc(100% - 2rem);
   border: none;
   border-radius: 0.25rem;
-  margin: 0.5rem 0;
+  margin: 0 0 0.5rem;
   padding: 0 1rem;
   display: flex;
   flex-flow: row nowrap;
@@ -23,5 +23,5 @@ const StyledInput = styled.input`
 `;
 
 export default (props) => (
-  <StyledInput {...props} />
+  <StyledInput autoFocus {...props} />
 );
