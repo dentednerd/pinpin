@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledCard = styled.div`
   background: #828dac;
   height: 2rem;
-  width: calc(100% - 2rem);
+  width: 30vw;
   border: none;
   border-radius: 0.25rem;
   color: white;
@@ -22,12 +22,10 @@ const StyledCard = styled.div`
     background-color:#939ebd;
   }
 
-  .delete-card {
-    background: white;
-    border: solid 1px white;
-    border-radius: 4px;
-    color: #828dac;
-    box-shadow: 0;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
@@ -36,7 +34,7 @@ const Card = (props) => {
 
   return (
     <StyledCard onClick={() => deleteCard()}>
-      {card.text}
+      <span>{card.text}</span>
     </StyledCard>
   );
 }

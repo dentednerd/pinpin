@@ -1,62 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 
-export default class AddACard extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      showForm: false
-    };
-    this.toggleForm = this.toggleForm.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
-  }
+const AddButtons = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
 
-  toggleForm () {
-    this.setState({
-      showForm: !this.state.showForm
-    });
-  }
-  handleSubmit (event) {
+const AddACard = (props) => {
+  const { addCard, id } = props;
+  const [showForm, toggleShowForm] = useState(false);
+
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     const newCard = event.target.children[0].value;
-    this.props.addCard(newCard, this.props.id);
-    this.toggleForm();
+    addCard(newCard, id);
+    toggleShowForm(false);
   }
-  handleEnterKeyPress (e) {
-    if (e && e.key === 'Enter') {
-      this.props.addCard(document.forms[0].childNodes[0].value, this.props.id);
+
+  const handleEnterKeyPress = (event) => {
+    if (event && event.key === 'Enter') {
+      addCard(document.forms[0].childNodes[0].value, id);
     }
   }
 
-  render () {
-    const AddButtons = styled.div`
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-    `;
-
-    const noRightMargin = css`
-      margin-right: 0;
-    `;
-
-    return (
-      <div className='FormBox'>
-        {
-          this.state.showForm
-          ? <form className="ListForm" onSubmit={this.handleSubmit} >
-              <Input className='AddACardForm' onKeyPress={this.handleEnterKeyPress} style={{ fontSize: '1rem' }}/>
-              <AddButtons>
-                <Button type="submit" text='add task' />
-                <Button onClick={this.toggleForm} text='cancel' className={noRightMargin} />
-              </AddButtons>
-            </form>
-          : <Button href="#" onClick={this.toggleForm} text='add task' />
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      {
+        showForm
+        ? <form
+            className="ListForm"
+            onSubmit={handleSubmit}
+          >
+            <Input
+              className='AddACardForm'
+              onKeyPress={handleEnterKeyPress}
+              style={{ fontSize: '1rem' }}
+            />
+            <AddButtons>
+              <Button
+                type="submit"
+                text='add task'
+              />
+              <Button
+                onClick={() => toggleShowForm(false)}
+                text='cancel'
+              />
+            </AddButtons>
+          </form>
+        : (
+          <Button
+            href="#"
+            onClick={() => toggleShowForm(!showForm)}
+            text='add task'
+          />
+        )
+      }
+    </div>
+  );
 }
+
+export default AddACard;

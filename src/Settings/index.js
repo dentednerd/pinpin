@@ -1,5 +1,10 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import Button from '../atoms/Button';
+
+const StyledSettings = styled.div`
+
+`;
 
 const Settings = () =>{
   const resetName = () => {
@@ -13,10 +18,10 @@ const Settings = () =>{
   }
 
   return (
-    <div>
+    <StyledSettings>
       <Button onClick={() => resetName()} text="reset name"/>
       <Button onClick={() => resetLocation()} text="reset location" />
-    </div>
+    </StyledSettings>
   )
 }
 

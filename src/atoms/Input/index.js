@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const StyledInput = styled.input`
-  background-color: #828dac;
+  background-color: #b29c93;
   color: white;
-  height: 4rem;
+  height: 2rem;
   width: calc(100% - 2rem);
   border: none;
   border-radius: 0.25rem;
