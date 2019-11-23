@@ -1,27 +1,13 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import Button from '../atoms/Button';
+import { setLocalName, setLocalLocation } from '../utils';
 
-const StyledSettings = styled.div`
-
-`;
-
-const Settings = () =>{
-  const resetName = () => {
-    localStorage.removeItem('pinpinName');
-    localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
-  }
-
-  const resetLocation = () => {
-    localStorage.removeItem('pinpinLocation');
-    localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'e.g. London,UK'));
-  }
-
+const Settings = () => {
   return (
-    <StyledSettings>
-      <Button onClick={() => resetName()} text="reset name"/>
-      <Button onClick={() => resetLocation()} text="reset location" />
-    </StyledSettings>
+    <section>
+      <Button onClick={() => setLocalName()} text="reset name"/>
+      <Button onClick={() => setLocalLocation()} text="reset location" />
+    </section>
   )
 }
 
