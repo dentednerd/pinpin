@@ -11,5 +11,5 @@
     "tabs",
     "geolocation"
   ],
-  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'blob:' 'sha256-TkD/E74qLj9lMMvpjnsXd9QuIRSTN3NlUjIbkHSAyJk='; object-src 'self'"
 }

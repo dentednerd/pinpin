@@ -40,11 +40,8 @@ const App = () => {
       <Helmet>
         <title>{currentTitle}, {name}.</title>
       </Helmet>
-
       <Grid />
-
       <Footer hour={hour} />
-      
     </main>
   );
 };

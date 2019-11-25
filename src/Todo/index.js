@@ -17,7 +17,7 @@ const Todo = () => {
 
   const initCards = () => {
     const storedCards = JSON.parse(localStorage.getItem('pinpinTodo'));
-    if (storedCards.length < 1) {
+    if (!storedCards) {
       return starterCards;
     }
     return storedCards;
