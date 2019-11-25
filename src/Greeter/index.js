@@ -16,11 +16,12 @@ dayjs.extend(AdvancedFormat);
 const Greeter = () => {
   const StyledGreeter = styled.section`
   text-align: left;
+  font-size: calc(8px + 3vh);
 
     h1 {
       font-family: 'Pangolin', cursive;
       font-weight: lighter;
-      font-size: 3rem;
+      font-size: calc(16px + 3vh);
       margin: 0px;
     }
   `;

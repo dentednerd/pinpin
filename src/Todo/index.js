@@ -81,6 +81,7 @@ const Todo = () => {
     background: #717c9b;
     color: #ffffff;
     font-family: 'Pangolin', cursive;
+    height: 2rem;
     padding: 0 1rem;
     display: flex;
     flex-flow: row nowrap;

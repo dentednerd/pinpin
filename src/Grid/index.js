@@ -14,12 +14,12 @@ const StyledGrid = styled.section`
 
 const Left = styled.section`
   height: 80vh;
-  width: 60vw;
+  width: 50vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: flex-start;
-  font-size: 1.5rem;
+  padding-right: 5vw;
 `;
 
 const Right = styled.section`
