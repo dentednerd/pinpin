@@ -18,6 +18,12 @@ const Weather = () => {
   const [weather, setWeather] = useState(getLocalWeather());
   const [location, setLocation] = useState(getLocalLocation());
 
+  useEffect(() => {
+    if (location === ('undefined' || null || '')) {
+      setLocalLocation('your area');
+    }
+  }, [location]);
+
   useInterval(() => {
     setLocation(getLocalLocation());
   }, 1000);

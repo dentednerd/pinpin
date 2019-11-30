@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Greeter from '../Greeter';
-import Todo from '../Todo';
+import Thoughts from '../Thoughts';
 import Settings from '../Settings';
 
 const StyledGrid = styled.section`
@@ -36,7 +36,7 @@ const Grid = ({ showSettings, toggleShowSettings }) => {
         <Greeter />
       </Left>
       <Right>
-        {showSettings ? <Settings toggleShowSettings={toggleShowSettings}/> : <Todo />}
+        {showSettings ? <Settings toggleShowSettings={toggleShowSettings}/> : <Thoughts />}
       </Right>
     </StyledGrid>
   );

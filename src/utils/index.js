@@ -4,16 +4,10 @@ import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(AdvancedFormat);
 
 const getLocalName = () => localStorage.getItem('pinpinName');
-const setLocalName = (newName) => {
-  localStorage.removeItem('pinpinName');
-  localStorage.setItem('pinpinName', newName);
-}
+const setLocalName = (newName) => localStorage.setItem('pinpinName', newName);
 
 const getLocalLocation = () => localStorage.getItem('pinpinLocation');
-const setLocalLocation = (newLocation) => {
-  localStorage.removeItem('pinpinLocation');
-  localStorage.setItem('pinpinLocation', newLocation);
-}
+const setLocalLocation = (newLocation) => localStorage.setItem('pinpinLocation', newLocation);
 
 const getLocalWeather = () => localStorage.getItem('pinpinWeather');
 const setLocalWeather = (weather) => {

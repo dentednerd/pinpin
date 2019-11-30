@@ -3,21 +3,25 @@ import { v4 } from 'uuid';
 import styled from '@emotion/styled';
 import List from './List';
 
-const Todo = () => {
+const Thoughts = () => {
   const starterCards = [
+    {
+      id: v4(),
+      text: 'Pin your thoughts here to save them for later'
+    },
     {
       id: v4(),
       text: 'Click "pinpin" in the bottom right corner to change settings'
     },
     {
       id: v4(),
-      text: 'Click a thought to remove it'
+      text: 'Click a thought to unpin it'
     },
   ]
 
   const initCards = () => {
     const storedCards = JSON.parse(localStorage.getItem('pinpinTodo'));
-    if (!storedCards) {
+    if (storedCards.length < 1) {
       return starterCards;
     }
     return storedCards;
@@ -49,7 +53,7 @@ const Todo = () => {
     localStorage.setItem('pinpinTodo', JSON.stringify([...newCards]));
   }
 
-  const StyledToDo = styled.section`
+  const StyledThoughts = styled.section`
     position: relative;
     display: flex;
     flex-flow: row nowrap;
@@ -96,15 +100,15 @@ const Todo = () => {
   `;
 
   return (
-    <StyledToDo>
+    <StyledThoughts>
       <TitleCard>pin your thoughts here</TitleCard>
       <List 
         cards={cards}
         deleteCard={deleteCard}
         addCard={addCard}
       />
-    </StyledToDo>
+    </StyledThoughts>
   );
 }
 
-export default Todo;
+export default Thoughts;

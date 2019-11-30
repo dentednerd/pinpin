@@ -62,6 +62,9 @@ const Settings = ({ toggleShowSettings }) => {
           <TitleCard>your name</TitleCard>
           <Input
             placeholder={getLocalName()}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={(e) => e.target.placeholder = getLocalName()}
+            autoFocus={false}
           />
         </Section>
 
@@ -69,6 +72,9 @@ const Settings = ({ toggleShowSettings }) => {
           <TitleCard>your location</TitleCard>
           <Input
             placeholder={getLocalLocation()}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={(e) => e.target.placeholder = getLocalLocation()}
+            autoFocus={false}
           />
         </Section>
         <Button

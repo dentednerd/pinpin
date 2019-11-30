@@ -29,18 +29,16 @@ const Greeter = () => {
   const [name, setName] = useState(getLocalName());
   const [time, setTime] = useState(dayjs().format('HH:mm'));
 
+  useEffect(() => {
+    if (name === 'undefined' || name === null || name === '') {
+      setLocalName('you');
+    }
+  }, [name])
+
   useInterval(() => {
     setName(getLocalName());
     setTime(dayjs().format('HH:mm'));
   }, 1000);
-
-  useEffect(() => {
-    const storedName = getLocalName();
-    if (!storedName) {
-      setLocalName();
-    }
-    setName(storedName);
-  }, [])
 
   return (
     <StyledGreeter>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Helmet from 'react-helmet'
 import Grid from './Grid';
 import Footer from './Footer';
-import { hour, currentTitle, getLocalName, setLocalName, useInterval } from './utils';
+import { hour, currentTitle, getLocalName, useInterval } from './utils';
 
 if (hour <= 3 || hour >= 21) {
   document.body.classList.add('night');
@@ -28,21 +28,13 @@ const App = () => {
     setName(getLocalName());
   }, 1000);
 
-  useEffect(() => {
-    const storedName = getLocalName();
-    if (!storedName) {
-      setLocalName();
-    }
-    setName(storedName);
-  }, [])
-
   return (
     <main className="App">
       <Helmet>
-        <title>{currentTitle}, {name}.</title>
+        <title>{currentTitle}, {name || 'you'}.</title>
       </Helmet>
       <Grid showSettings={showSettings} toggleShowSettings={toggleShowSettings} />
-      <Footer hour={hour} toggleShowSettings={toggleShowSettings} />
+      <Footer hour={hour} showSettings={showSettings} toggleShowSettings={toggleShowSettings} />
     </main>
   );
 };

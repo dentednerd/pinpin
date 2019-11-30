@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Footer = (props) => {
-  const { hour, toggleShowSettings } = props;
+  const { hour, showSettings, toggleShowSettings } = props;
 
   const StyledFooter = styled.footer`
     background-color: transparent;
@@ -37,7 +37,7 @@ const Footer = (props) => {
   return (
     <StyledFooter>
       <span
-        onClick={() => toggleShowSettings(true)}
+        onClick={() => toggleShowSettings(!showSettings)}
       >
         pinpin
       </span>
