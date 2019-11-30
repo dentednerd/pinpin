@@ -24,15 +24,3 @@ body {
 .night {
   background-image: linear-gradient(to bottom right, #332E4A 0%, #828dac 100%);
 }
-
-.App {
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  max-height: 100vh;
-  color: white;
-}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import Helmet from 'react-helmet'
 import Grid from './Grid';
 import Footer from './Footer';
@@ -20,6 +21,18 @@ if (hour > 16 && hour <= 20) {
   document.body.classList.add('dusk');
 }
 
+const StyledApp = styled.main`
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-height: 100vh;
+  color: white;
+`;
+
 const App = () => {
   const [name, setName] = useState(getLocalName());
   const [showSettings, toggleShowSettings] = useState(false);
@@ -29,13 +42,13 @@ const App = () => {
   }, 1000);
 
   return (
-    <main className="App">
+    <StyledApp>
       <Helmet>
         <title>{currentTitle}, {name || 'you'}.</title>
       </Helmet>
       <Grid showSettings={showSettings} toggleShowSettings={toggleShowSettings} />
       <Footer hour={hour} showSettings={showSettings} toggleShowSettings={toggleShowSettings} />
-    </main>
+    </StyledApp>
   );
 };
 
