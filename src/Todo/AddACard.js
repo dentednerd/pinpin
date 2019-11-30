@@ -33,18 +33,16 @@ const AddACard = (props) => {
       {
         showForm
         ? <form
-            className="ListForm"
             onSubmit={handleSubmit}
           >
             <Input
-              className='AddACardForm'
               onKeyPress={handleEnterKeyPress}
               style={{ fontSize: '1rem' }}
             />
             <AddButtons>
               <Button
                 type="submit"
-                text='add task'
+                text='pin this thought'
               />
               <Button
                 onClick={() => toggleShowForm(false)}
@@ -56,7 +54,7 @@ const AddACard = (props) => {
           <Button
             href="#"
             onClick={() => toggleShowForm(!showForm)}
-            text='add thought'
+            text='pin a thought'
           />
         )
       }

@@ -4,15 +4,15 @@ import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(AdvancedFormat);
 
 const getLocalName = () => localStorage.getItem('pinpinName');
-const setLocalName = () => {
+const setLocalName = (newName) => {
   localStorage.removeItem('pinpinName');
-  localStorage.setItem('pinpinName', prompt('What can pinpin call you?', 'Your name'));
+  localStorage.setItem('pinpinName', newName);
 }
 
 const getLocalLocation = () => localStorage.getItem('pinpinLocation');
-const setLocalLocation = () => {
+const setLocalLocation = (newLocation) => {
   localStorage.removeItem('pinpinLocation');
-  localStorage.setItem('pinpinLocation', prompt('Where are you? (City name, 2-letter country code)', 'Manchester,UK'));
+  localStorage.setItem('pinpinLocation', newLocation);
 }
 
 const getLocalWeather = () => localStorage.getItem('pinpinWeather');

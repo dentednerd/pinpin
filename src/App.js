@@ -22,6 +22,7 @@ if (hour > 16 && hour <= 20) {
 
 const App = () => {
   const [name, setName] = useState(getLocalName());
+  const [showSettings, toggleShowSettings] = useState(false);
 
   useInterval(() => {
     setName(getLocalName());
@@ -40,8 +41,8 @@ const App = () => {
       <Helmet>
         <title>{currentTitle}, {name}.</title>
       </Helmet>
-      <Grid />
-      <Footer hour={hour} />
+      <Grid showSettings={showSettings} toggleShowSettings={toggleShowSettings} />
+      <Footer hour={hour} toggleShowSettings={toggleShowSettings} />
     </main>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Greeter from '../Greeter';
 import Todo from '../Todo';
+import Settings from '../Settings';
 
 const StyledGrid = styled.section`
   display: flex;
@@ -28,14 +29,14 @@ const Right = styled.section`
   justify-content: flex-start;
 `;
 
-const Grid = (props) => {
+const Grid = ({ showSettings, toggleShowSettings }) => {
   return (
     <StyledGrid>
       <Left>
         <Greeter />
       </Left>
       <Right>
-        <Todo />
+        {showSettings ? <Settings toggleShowSettings={toggleShowSettings}/> : <Todo />}
       </Right>
     </StyledGrid>
   );

@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import Settings from '../Settings';
 
 const Footer = (props) => {
-  const [settings, toggleSettings] = useState(false);
-  const { hour } = props;
+  const { hour, toggleShowSettings } = props;
 
   const StyledFooter = styled.footer`
     background-color: transparent;
@@ -30,7 +28,7 @@ const Footer = (props) => {
       transition: text-shadow 0.25s ease-in-out;
 
       &:hover {
-        text-shadow: ${!settings && '2px 2px 6px #ffffff, -2px -2px 6px #ffffff, 2px -2px 6px #ffffff, -2px 2px 6px #ffffff'};
+        text-shadow: 2px 2px 6px #ffffff, -2px -2px 6px #ffffff, 2px -2px 6px #ffffff, -2px 2px 6px #ffffff;
         transition: text-shadow 0.25s ease-in-out;
       }
     }
@@ -38,10 +36,8 @@ const Footer = (props) => {
 
   return (
     <StyledFooter>
-      {settings && <Settings />}
       <span
-        style={{  }}
-        onClick={() => toggleSettings(!settings)}
+        onClick={() => toggleShowSettings(true)}
       >
         pinpin
       </span>

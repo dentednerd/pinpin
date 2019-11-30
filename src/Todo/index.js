@@ -58,6 +58,12 @@ const Todo = () => {
     margin: 0;
     width: 40vw;
     min-width: 40vw;
+    animation: fadein 1s;
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
     a {
       text-decoration: none;
@@ -91,7 +97,7 @@ const Todo = () => {
 
   return (
     <StyledToDo>
-      <TitleCard>keep your thoughts here</TitleCard>
+      <TitleCard>pin your thoughts here</TitleCard>
       <List 
         cards={cards}
         deleteCard={deleteCard}
