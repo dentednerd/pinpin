@@ -2,6 +2,8 @@
 
 A calming Chrome extension for new tabs.
 
+![Pinpin](./screenshot.png)
+
 ```bash
 git clone git@github.com:dentednerd/pinpin.git
 cd pinpin
@@ -22,9 +24,3 @@ Click "Load unpacked".
 Navigate to `/build`.
 
 Open a new tab.
-
-## Todo
-
-[ ] Add Chrome extension icon
-[ ] Get location for Greeter
-[ ] Get location-based weather for Greeter
