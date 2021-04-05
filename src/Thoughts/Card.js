@@ -4,28 +4,23 @@ import PropTypes from 'prop-types';
 
 const StyledCard = styled.div`
   background: #828dac;
-  height: 2rem;
-  width: calc(40vw - 4rem);
+  min-height: 2rem;
+  width: calc(100% - 2rem);
   border: none;
   border-radius: 0.25rem;
   color: white;
   margin: 0 0 0.5rem;
-  padding: 0 1rem;
+  padding: 0.25rem 1rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items:center;
   font-size: 1rem;
   cursor: pointer;
+  text-align: left;
 
-  &:hover { 
+  &:hover {
     background-color:#939ebd;
-  }
-
-  span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 `;
 

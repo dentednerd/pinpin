@@ -5,28 +5,33 @@ import Thoughts from '../Thoughts';
 import Settings from '../Settings';
 
 const StyledGrid = styled.section`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 90vw;
-  max-width: 90vw;
+  display: grid;
+  grid-template-rows: repeat(2, 45vh);
+  grid-template-columns: 100vw;
+  width: 100vw;
+
+  @media(min-width: 768px) {
+    grid-template-rows: 90vh;
+    grid-template-columns: repeat(2, 50%);
+  }
 `;
 
 const Left = styled.section`
-  height: 80vh;
-  width: 50vw;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-content: center;
-  align-items: flex-start;
-  padding-right: 5vw;
+  align-items: center;
+  padding: 1rem;
+  width: calc(100% - 2rem);
 `;
 
 const Right = styled.section`
-  width: 40vw;
-  min-width: 40vw;
-  justify-content: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: calc(100% - 2rem);
 `;
 
 const Grid = ({ showSettings, toggleShowSettings }) => {

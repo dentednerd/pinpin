@@ -60,8 +60,7 @@ const Thoughts = () => {
     justify-content: space-around;
     align-items: flex-start;
     margin: 0;
-    width: 40vw;
-    min-width: 40vw;
+    width: calc(100% - 2rem);
     animation: fadein 1s;
 
     @keyframes fadein {
@@ -102,7 +101,7 @@ const Thoughts = () => {
   return (
     <StyledThoughts>
       <TitleCard>pin your thoughts here</TitleCard>
-      <List 
+      <List
         cards={cards}
         deleteCard={deleteCard}
         addCard={addCard}
