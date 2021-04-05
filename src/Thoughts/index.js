@@ -80,27 +80,10 @@ const Thoughts = () => {
     }
   `;
 
-  const TitleCard = styled.section`
-    position: absolute;
-    top: -1.5rem;
-    right: 1rem;
-    height: 2rem;
-    border: none;
-    border-radius: 0.25rem;
-    background: #717c9b;
-    color: #ffffff;
-    font-family: 'Pangolin', cursive;
-    height: 2rem;
-    padding: 0 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items:center;
-  `;
+
 
   return (
     <StyledThoughts>
-      <TitleCard>pin your thoughts here</TitleCard>
       <List
         cards={cards}
         deleteCard={deleteCard}

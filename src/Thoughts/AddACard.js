@@ -7,7 +7,7 @@ const AddButtons = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  min-width: calc(30vw + 2rem);
+  min-width: calc(100% - 2rem);
 `;
 
 const AddACard = (props) => {
